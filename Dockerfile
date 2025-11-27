@@ -15,3 +15,5 @@ RUN source /opt/conda/etc/profile.d/conda.sh && \
 
 # 3) For the rest of the image, always run inside "scan2"
 SHELL ["conda", "run", "-n", "scan2", "/bin/bash", "-c"]
+
+RUN python3 -c "from SigProfilerMatrixGenerator import install as genInstall; genInstall.install('GRCh38', rsync=False, bash=True)"
