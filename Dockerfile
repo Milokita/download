@@ -1,5 +1,8 @@
 FROM ghcr.io/milokita/scan2-base:main
-RUN conda install -c conda-forge -c bioconda bioconductor-bsgenome.hsapiens.ucsc.hg38
+
+SHELL ["bash", "-lc"]
+
+RUN CONDA_AUTO_UPDATE_CONDA=false conda install -c conda-forge -c bioconda bioconductor-bsgenome.hsapiens.ucsc.hg38
 
 SHELL ["conda", "run", "-n", "scan2", "/bin/bash", "-c"]
 # RUN python3 -c "from SigProfilerMatrixGenerator import install as genInstall; genInstall.install('GRCh37', rsync=False, bash=True)"
