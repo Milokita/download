@@ -1,6 +1,4 @@
-FROM condaforge/miniforge3:latest
-RUN apt update && apt upgrade -y 
-RUN conda create -n scan2 -c conda-forge -c bioconda -c jluquette -c dranew -c soil scan2
+FROM ghcr.io/milokita/scan2-base:main
 RUN conda install -c conda-forge -c bioconda bioconductor-bsgenome.hsapiens.ucsc.hg38
 
 SHELL ["conda", "run", "-n", "scan2", "/bin/bash", "-c"]
